@@ -1,50 +1,19 @@
 .tabber {
-	// Codex tokens aren't avaliable in older MW version
-	--tabber-color-progressive: var( --color-progressive, #36c ); // @color-progressive
-	--tabber-color-progressive--hover: var( --color-progressive--hover, #447ff5 ); // @color-progressive--hover
-	--tabber-color-progressive--active: var( --color-progressive--active, #2a4b8d ); // @color-progressive--active
-	--tabber-color-base: var( --color-base, #202122 ); // @color-base
-	--tabber-color-subtle: var( --color-subtle, #54595d ); // @color-subtle
-	--tabber-background-color-button-quiet--hover: var( --background-color-button-quiet--hover, rgba( 0, 24, 73, 0.027 ) ); // @background-color-button-quiet--hover
-	--tabber-background-color-button-quiet--active: var( --background-color-button-quiet--active, rgba( 0, 24, 73, 0.082 ) ); // @background-color-button-quiet--active
-	--tabber-border-color-base: var( --border-color-base, #a2a9b1 ); // @border-color-base
-	--tabber-height-indicator: 2px;
-	position: relative;
-	display: flex;
-
-	/* establish primary containing box */
-	overflow: hidden;
-	flex-direction: column;
-
-	&__tabs {
-		display: flex;
-		overflow: auto hidden;
-		scrollbar-width: none;
-
-		&::-webkit-scrollbar {
-			width: 0;
-			height: 0;
-		}
-	}
-
-	&__section {
-		display: grid;
-		overflow: hidden;
-		block-size: 100%;
-		grid-auto-columns: 100%;
-		grid-auto-flow: column;
-		scroll-snap-type: x mandatory;
-	}
-
 	&__header {
+		--tabber-arrow-width: 32px;
 		position: relative;
 		display: flex;
-		flex-direction: column;
-		/* defend against <section> needing 100% */
+		/* defend against .tabber__section needing 100% */
 		flex-shrink: 0;
-		box-shadow: inset 0 -1px 0 0 var( --tabber-border-color-base );
+		flex-direction: column;
 		/* fixes cross browser quarks */
 		min-block-size: fit-content;
+		box-shadow: inset 0 -1px 0 0 var( --border-color-base, #a2a9b1 );
+
+		@media ( hover: none ) {
+			/* stylelint-disable-next-line length-zero-no-unit */
+			--tabber-arrow-width: 0px;
+		}
 
 		button {
 			/* Remove all default button styles */
@@ -63,39 +32,39 @@
 		& &__prev,
 		& &__next {
 			position: absolute;
-			z-index: 1;
 			top: 0;
 			bottom: 0;
-			display: none;
-			width: 20px;
-			border-radius: 4px;
+			z-index: 1;
+			display: none; // Required as all:unset also unset display:none
+			width: var( --tabber-arrow-width );
 			cursor: pointer;
+			border-radius: 4px;
 
 			&::after {
-				position: absolute;
-				top: 0;
-				bottom: 0;
+				display: block;
 				width: inherit;
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: 14px;
+				height: 100%;
+				pointer-events: none; // Required to avoid aria-hidden error message
 				content: '';
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 14px;
 			}
 		}
 
 		&--prev-visible .tabber__tabs {
-			-webkit-mask-image: linear-gradient( 90deg, transparent, #000 20% );
-			mask-image: linear-gradient( 90deg, transparent, #000 20% );
+			-webkit-mask-image: linear-gradient( to right, transparent var( --tabber-arrow-width ), #000 20% );
+			mask-image: linear-gradient( to right, transparent var( --tabber-arrow-width ), #000 20% );
 		}
 
 		&--next-visible .tabber__tabs {
-			-webkit-mask-image: linear-gradient( 90deg, #000 80%, transparent );
-			mask-image: linear-gradient( 90deg, #000 80%, transparent );
+			-webkit-mask-image: linear-gradient( to right, #000 80%, transparent calc( 100% - var( --tabber-arrow-width ) ) );
+			mask-image: linear-gradient( to right, #000 80%, transparent calc( 100% - var( --tabber-arrow-width ) ) );
 		}
 
 		&--prev-visible.tabber__header--next-visible .tabber__tabs {
-			-webkit-mask-image: linear-gradient( 90deg, transparent, #000 20%, #000 80%, transparent );
-			mask-image: linear-gradient( 90deg, transparent, #000 20%, #000 80%, transparent );
+			-webkit-mask-image: linear-gradient( to right, transparent var( --tabber-arrow-width ), #000 20%, #000 80%, transparent calc( 100% - var( --tabber-arrow-width ) ) );
+			mask-image: linear-gradient( to right, transparent var( --tabber-arrow-width ), #000 20%, #000 80%, transparent calc( 100% - var( --tabber-arrow-width ) ) );
 		}
 
 		&--prev-visible .tabber__header__prev,
@@ -104,73 +73,48 @@
 		}
 	}
 
-	&__header,
-	&__section {
-		scrollbar-width: none;
+	&__tabs {
+		position: relative;
 
-		&::-webkit-scrollbar {
-			width: 0;
-			height: 0;
-		}
-	}
-
-	&__indicator {
-		display: none;
-		margin-top: ~'calc( var( --tabber-height-indicator ) * -1 )';
-		background: var( --tabber-color-progressive );
-		block-size: var( --tabber-height-indicator );
-		inline-size: 0;
-
-		&--visible {
-			display: block;
-		}
-	}
-
-	&__tab {
-		padding: 0.5em 0.75em;
-		color: var( --tabber-color );
-		font-weight: bold;
-		text-decoration: none;
-		white-space: nowrap;
-
-		&:visited {
-			color: var( --tabber-color );
-		}
-
-		&:hover,
-		&:active,
-		&:focus {
-			text-decoration: none;
-		}
-
-		&[ aria-selected='true' ] {
-			box-shadow: 0 -2px 0 var( --tabber-color-progressive ) inset;
-		}
-
-		&[ aria-selected='true' ],
-		&[ aria-selected='true' ]:visited {
-			color: var( --tabber-color-progressive );
-		}
-	}
-
-	&__tabs--animate {
-		.tabber__tab[ aria-selected='true' ] {
+		// JS appends .tabber__indicator at construction; defer the active-tab
+		// visual to it instead of the per-tab box-shadow. The selector still
+		// applies for everything else (color, etc.), so wiki overrides of
+		// non-shadow properties continue to work. Wikis that previously
+		// overrode the box-shadow color should switch to styling
+		// .tabber__indicator { background: ... }.
+		&:has( > .tabber__indicator ) > .tabber__tab[ aria-selected='true' ] {
 			box-shadow: none;
 		}
 	}
 
-	&__panel {
-		height: max-content;
-		overflow-x: auto;
-		scroll-snap-align: start;
+	&__tab {
+		// Skins such as Vector set a border-radius to <a> elements,
+		// so we need to override it here.
+		border-radius: 0;
 
-		// Hide edit buttons for non-transclusion tabs since they don't work
-		/* stylelint-disable-next-line selector-class-pattern */
-		&:not( [ data-mw-tabber-page-title ] ) .mw-editsection {
-			display: none;
+		&[ aria-selected='true' ] {
+			box-shadow: 0 -2px 0 var( --color-progressive, #36c ) inset;
 		}
 
+		&[ aria-selected='true' ],
+		&[ aria-selected='true' ]:visited {
+			color: var( --color-progressive, #36c );
+		}
+	}
+
+	&__indicator {
+		position: absolute;
+		bottom: 0;
+		/* @noflip */
+		left: 0;
+		height: 2px;
+		pointer-events: none;
+		background: var( --color-progressive, #36c );
+	}
+
+	&__panel {
 		&--loading {
+			/* stylelint-disable no-descending-specificity */
 			.tabber__transclusion {
 				opacity: 0.1;
 
@@ -183,15 +127,15 @@
 				&::after {
 					display: block;
 					height: 0.5em;
-					border-radius: 40px;
 					margin-top: 1em;
-					animation-duration: 3s;
-					animation-fill-mode: forwards;
-					animation-iteration-count: infinite;
+					background-color: #000;
+					background-image: linear-gradient( to right, var( --color-base, #202122 ) 8%, var( --color-subtle, #54595d ) 18%, var( --color-base, #202122 ) 33% );
+					border-radius: 40px;
 					animation-name: skeletonload;
+					animation-duration: 3s;
 					animation-timing-function: linear;
-					background: #000;
-					background: linear-gradient( to right, var( --tabber-color-base ) 8%, var( --tabber-color-subtle ) 18%, var( --tabber-color-base ) 33% );
+					animation-iteration-count: infinite;
+					animation-fill-mode: forwards;
 				}
 
 				&::before,
@@ -203,6 +147,7 @@
 					width: 60%;
 				}
 			}
+			/* stylelint-enable no-descending-specificity */
 		}
 	}
 }
@@ -214,56 +159,154 @@
 			scroll-behavior: smooth;
 		}
 
-		&__indicator {
-			transition: transform 250ms ease, width 250ms ease;
-		}
-
-		&__section,
 		&__tabs {
 			@media ( min-width: 720px ) {
 				scroll-behavior: smooth;
 			}
 		}
+
+		// scroll-snap-type tracks the snap target's painted position including
+		// transforms — without suspending it, scrollLeft follows the panel's
+		// translateX and exposes adjacent panels.
+		&__section:has( > .tabber__panel--entering-from-left ),
+		&__section:has( > .tabber__panel--entering-from-right ) {
+			scroll-snap-type: none;
+		}
+
+		&__panel--entering-from-right {
+			animation: tabber-panel-enter-from-right 150ms cubic-bezier( 0.4, 0, 0.2, 1 );
+		}
+
+		&__panel--entering-from-left {
+			animation: tabber-panel-enter-from-left 150ms cubic-bezier( 0.4, 0, 0.2, 1 );
+		}
+
+		&__indicator {
+			transition: transform 150ms cubic-bezier( 0.4, 0, 0.2, 1 ), width 150ms cubic-bezier( 0.4, 0, 0.2, 1 );
+		}
 	}
 }
 
-@media ( hover: none ) {
-	// Need extra specificity to override
-	.tabber {
-		.tabber__header {
-			&__prev,
-			&__next {
-				pointer-events: none; // Disable arrow button
+@keyframes tabber-panel-enter-from-right {
+	from {
+		opacity: 0;
+		transform: translateX( 48px );
+	}
 
-				&::after {
-					background-image: none; // Remove arrow icon
-				}
-			}
-		}
+	to {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+}
+
+@keyframes tabber-panel-enter-from-left {
+	from {
+		opacity: 0;
+		transform: translateX( -48px );
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+}
+
+// View Transitions path; the `--entering-*` animation above is the fallback.
+// The transition is element-scoped, so these pseudo-elements originate from
+// `.tabber__section` rather than the document root.
+//
+// All four levels carry the duration/easing — UA defaults at each level
+// otherwise run to 250ms in parallel and lengthen the perceived end time.
+.tabber-animations-ready .tabber__section {
+	&::view-transition-group( tabber-section-forward ),
+	&::view-transition-group( tabber-section-backward ),
+	&::view-transition-image-pair( tabber-section-forward ),
+	&::view-transition-image-pair( tabber-section-backward ),
+	&::view-transition-old( tabber-section-forward ),
+	&::view-transition-old( tabber-section-backward ),
+	&::view-transition-new( tabber-section-forward ),
+	&::view-transition-new( tabber-section-backward ) {
+		animation-duration: 150ms;
+		animation-timing-function: cubic-bezier( 0.4, 0, 0.2, 1 );
+		animation-fill-mode: both;
+	}
+
+	&::view-transition-old( tabber-section-forward ) {
+		animation-name: tabber-vt-slide-out-left;
+	}
+
+	&::view-transition-new( tabber-section-forward ) {
+		animation-name: tabber-vt-slide-in-right;
+	}
+
+	&::view-transition-old( tabber-section-backward ) {
+		animation-name: tabber-vt-slide-out-right;
+	}
+
+	&::view-transition-new( tabber-section-backward ) {
+		animation-name: tabber-vt-slide-in-left;
+	}
+}
+
+@keyframes tabber-vt-slide-out-left {
+	from {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+
+	to {
+		opacity: 0;
+		transform: translateX( -48px );
+	}
+}
+
+@keyframes tabber-vt-slide-in-right {
+	from {
+		opacity: 0;
+		transform: translateX( 48px );
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+}
+
+@keyframes tabber-vt-slide-out-right {
+	from {
+		opacity: 1;
+		transform: translateX( 0 );
+	}
+
+	to {
+		opacity: 0;
+		transform: translateX( 48px );
+	}
+}
+
+@keyframes tabber-vt-slide-in-left {
+	from {
+		opacity: 0;
+		transform: translateX( -48px );
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX( 0 );
 	}
 }
 
 @media ( hover: hover ) {
 	.tabber {
-		&__tab {
-			&:hover {
-				color: var( --tabber-color-progressive--hover );
-			}
-
-			&:active {
-				color: var( --tabber-color-progressive--active );
-			}
-		}
-
 		&__header {
 			&__prev,
 			&__next {
 				&:hover {
-					background-color: var( --tabber-background-color-button-quiet--hover );
+					background-color: var( --background-color-button-quiet--hover, rgba( 0, 24, 73, 0.027 ) );
 				}
 
 				&:active {
-					background-color: var( --tabber-background-color-button-quiet--active );
+					background-color: var( --background-color-button-quiet--active, rgba( 0, 24, 73, 0.082 ) );
 				}
 			}
 		}
@@ -287,17 +330,23 @@
 
 	/* Show all tab contents */
 	.tabber__section {
+		grid-auto-flow: row;
+		gap: 1em;
 		/* stylelint-disable-next-line declaration-no-important */
 		height: auto !important;
-		gap: 1em;
-		grid-auto-flow: row;
+	}
+
+	/* Show every tab when printing, overriding the UA rule that skips rendering
+	 * `hidden="until-found"` content. */
+	.tabber__panel[ hidden ] {
+		content-visibility: visible;
 	}
 
 	/* Show tab header */
 	.tabber__panel::before {
 		display: block;
 		margin: 1em 0;
-		content: attr( data-mw-tabber-title );
 		font-weight: bold;
+		content: attr( data-mw-tabber-title );
 	}
 }

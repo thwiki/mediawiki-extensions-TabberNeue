@@ -1,5 +1,275 @@
 # Changelog
 
+## [4.1.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v4.0.2...v4.1.0) (2026-09-19)
+
+
+### Features
+
+* accept wrapper attributes in mw.ext.tabber.render ([fc2b503](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/fc2b503441943e2aa4ce73f6055803dbd6b18ab6)), closes [#341](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/341)
+
+
+### Bug Fixes
+
+* keep arrow keys inside a tab from moving the panel row ([c657b91](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/c657b91d775f2c75a106a5350ee006fda4410eb1)), closes [#356](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/356)
+* scope the tab-switch view transition to the tabber section ([fed0aef](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/fed0aefbd45bbe8ac11a4e84f7765aa7212b3aed))
+
+
+### Performance Improvements
+
+* skip the parser for tab labels without wikitext markup ([157b55b](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/157b55b7526ec472de38992cc26071d036fcfca1))
+
+## [4.0.2](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v4.0.1...v4.0.2) (2026-07-30)
+
+
+### Bug Fixes
+
+* correct overflow scrolling, indicator and arrow keys under RTL ([c1e91c8](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/c1e91c87ca6d06f3b1d79c158bb703806ed562a9))
+* enlarge the overflow arrow hit target to 32px ([1718857](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/17188574d94c9857579d69881263e022a38efefd)), closes [#308](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/308)
+* position the active-tab indicator correctly under RTL ([#334](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/334)) ([8bd659d](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8bd659d5fbebb9dca4d2575b59cdcaf71a466838))
+* reveal find-in-page matches in non-active tabs ([#333](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/333)) ([11bcbdf](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/11bcbdf337fadbbe723171920cfdb8080481241d))
+* **security:** escape tab and panel ID attributes in Tabs template ([6913bb6](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/6913bb6ba788da9110a943edbaa581f43db0ec06))
+
+
+### Miscellaneous Chores
+
+* remove stale compat/compat eslint-disable directives ([fa80010](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/fa8001053c770a266d9c260849accd746f7ca994))
+
+## [4.0.1](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v4.0.0...v4.0.1) (2026-06-30)
+
+
+### Bug Fixes
+
+* drop redundant "Try again" from VE Tabber validation errors ([786882c](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/786882cffff8d327152ea31176d9fc48c3321f6b))
+* keep VisualEditor Tabber tabs with empty content ([bb9fc81](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/bb9fc81e4be86c14035da3c9279091d86c77d25b)), closes [#315](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/315)
+* prevent VisualEditor Tabber dialog freeze on empty tab label ([d84e035](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/d84e0356918ca2225311ef7f5a254209cbccb22e)), closes [#314](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/314)
+* recolour the VE Tabber icon for focus and selected states ([ddecce9](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/ddecce94ef078a933e0678f4f3e316c56b11ca0d))
+* W3C-valid tab markup — &lt;div&gt; panels + aria-hidden indicator ([#309](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/309)) ([#321](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/321)) ([8050e04](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8050e044b4f57c4ffe095042b700f344723a239f))
+
+## [4.0.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.4.1...v4.0.0) (2026-06-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* Bookmarked URL fragments pointing to tabs with multi-word labels may need updating.
+
+### Features
+
+* add typed TabberNeueRenderLazyLoadedTabHook with legacy deprecation ([ea514e5](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/ea514e5a4583e139ab8bb171c0ac88dd848b41c6))
+* animate tab switches with View Transitions cross-fade + sliding indicator ([734755e](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/734755e73f1a85995976b987bfe0b2ac9be649d0))
+* opt-in tab wrapping mode ([#307](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/307)) ([8645326](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8645326c2909e31e337f535ed244b310be4c5a13))
+
+
+### Bug Fixes
+
+* sanitize tab IDs to match MW heading conventions ([5d8eaa8](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/5d8eaa8d4bad8ff0ff86be31da779aed9c889682))
+
+
+### Miscellaneous Chores
+
+* refresh package-lock.json ([f78beff](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/f78beff79d689a137696627335f989fc31ee04ca))
+
+## [3.4.1](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.4.0...v3.4.1) (2026-03-18)
+
+
+### Bug Fixes
+
+* bypass wikitext round-trip in LuaLibrary to prevent delimiter injection ([31374b5](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/31374b581897fd6ba33380079ee7a90c8c0ff9c5)), closes [#274](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/274)
+* prevent nested tabber clicks from triggering parent onSectionClick ([311ae26](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/311ae2655a2ba2612cd1509ce2de3c81f6f01f35)), closes [#252](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/252)
+* resolve disrupted ordered and unordered lists in tab content ([7cac999](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/7cac9992dbedfe6a8ff5888087eb3171362eaca5)), closes [#253](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/253)
+
+## [3.4.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.3.0...v3.4.0) (2026-03-12)
+
+
+### Features
+
+* implement full UI for Visual Editor dialogs ([30fcf2c](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/30fcf2cba9df229ddd703d743b979a4278b31ab4))
+
+
+### Miscellaneous Chores
+
+* add preflight scripts to composer and npm ([b31e475](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/b31e4754e14ce4626f919bed4d3ef11681d2a098))
+* resolve PHPCS and Phan warnings ([3ac5e95](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3ac5e95b0ddea701865c856d810f25a1906dc1d1))
+
+## [3.3.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.2.0...v3.3.0) (2025-07-09)
+
+
+### Features
+
+* scroll to active tab if it is partly hidden by the overflow button ([62ffbc4](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/62ffbc4c03acbd7c10b3c1d2312eeedf786c4e1c))
+
+
+### Bug Fixes
+
+* do not update active tab during programmatic smooth scroll ([67e2904](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/67e290488b3479ae212e20ca7d064b1d617b12cc))
+* only update URL hash on tab click ([7525622](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/752562244c0986339934507d9a1515ea8f135bf8)), closes [#245](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/245)
+* tabs with url-encoded characters not being selected through url fragment ([b5dff8e](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/b5dff8ee7634427b8ad9a731973710f25bdda6cc))
+
+## [3.2.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.1.2...v3.2.0) (2025-07-09)
+
+
+### Features
+
+* implement centralized data store for tabber instances ([0ef9dc6](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/0ef9dc63355320b97ccd3de3c5651bc6d6627433))
+* sync active tab handling to tabpanel visibility ([039c8a1](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/039c8a15e422d552bb89b9c87318ead55f11c5a4))
+
+
+### Bug Fixes
+
+* avoid aria-hidden focus error message ([ee2ca88](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/ee2ca88f95a9234b651c068c94fd42bc27673302))
+* reset tabpanel height when anchor inside is clicked ([cf93223](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/cf932237a1cfc868d27f24a00c126379e12303df)), closes [#240](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/240)
+
+## [3.1.2](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.1.1...v3.1.2) (2025-06-29)
+
+
+### Bug Fixes
+
+* mimic MW heading ID for tab ID ([8122bb4](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8122bb483fb5e250496cd232601e6f5372af54d8))
+
+## [3.1.1](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.1.0...v3.1.1) (2025-06-27)
+
+
+### Bug Fixes
+
+* **security:** escape attributes in mustache templates ([4cdf217](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/4cdf217ef96da74a1503d1dd0bb0ed898fc2a612))
+
+## [3.1.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v3.0.0...v3.1.0) (2025-06-26)
+
+
+### Features
+
+* add basic Scribunto library support ([d3fb52d](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/d3fb52dbf41b68b4a5e186962f759758fd79f6f4))
+
+
+### Bug Fixes
+
+* prevent Tabber buttons from submitting forms ([160fd11](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/160fd11a074d648ce3d8ae3adde30bf72b3c65fd))
+* remove newline from HTML ([8ff8154](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8ff81544e80bd8887929b16e24cd0e12f0f145df)), closes [#236](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/236)
+
+## [3.0.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.7.4...v3.0.0) (2025-05-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* The HTML structure has been changed. Make sure the purge the cache of the pages using Tabber. You can either purge all pages, or use the tracking category to do empty edits.
+* bump MediaWiki requirements to 1.43
+
+### Features
+
+* add href attribute to tab for noscript support ([bc08504](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/bc08504ab9fdb6b95560cf83abc34fd75d78da59))
+* handle duplicated tab label error gracefully ([baea2a6](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/baea2a6c7c5b026e6abccb5ff92b2cebc18e2bfe)), closes [#223](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/223)
+* improve id extraction for parse tab names ([b144870](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/b14487055c78608b77a250c1509b27470795ed8f))
+* improve transclusion handling and add server-side caching ([32e9b74](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/32e9b745362e2c99e261cdc8347ef5467711deae))
+* rewrite Tabber parser tag implementations ([#230](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/230)) ([62ce0fc](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/62ce0fcdf32bd3cfa77f92ff6b940459a14315fa))
+* trigger wikipage.content hook after loading transcluded content ([8403222](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/8403222da1983881b47df05d29c58e240d5b168a))
+* use revision ID for fetching transclusion content ([37495f7](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/37495f7b62be11a034c96fcb3395c24281d6c396))
+
+
+### Bug Fixes
+
+* add missing i18n message key ([edead33](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/edead33ca9efe4e85340be770347712ef58a1fde))
+* incorrect API abort implementation ([3cc4f4e](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3cc4f4ea5b0f86e95264ed4ae86fc243efbc6c48))
+* switch to the correct tab on page load ([cfbaa05](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/cfbaa05c8d54b52612dfcc823307847d63472e41))
+
+
+### Build System
+
+* bump MediaWiki requirements to 1.43 ([cdeddd3](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/cdeddd368d12ece42856d1fcee8a4b714c5a9396))
+
+## [2.7.4](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.7.3...v2.7.4) (2025-01-27)
+
+
+### Bug Fixes
+
+* incorrect tabber id counts with nested tabbers ([#215](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/215)) ([2430ad0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/2430ad02d26f3c5d8b11adbe5346b88565312cf9))
+* tabs not being selected with fragments that contain unescaped html special chars ([#214](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/214)) ([3cc5948](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3cc59485a16259110a8b6941503397bf5eea8e36))
+
+## [2.7.3](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.7.2...v2.7.3) (2025-01-25)
+
+
+### Bug Fixes
+
+* double encoding of htmlspecialchars for plain text tab labels ([#212](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/212)) ([3dabdbc](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3dabdbcbb842bf46021b66f0656b5d07969992a7))
+* percent-encoded fragments not changing tab on load and the hashchange event not working ([#210](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/210)) ([b8c1e75](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/b8c1e75d736aa00e89e415e5ce2cf853dbed59ae))
+
+## [2.7.2](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.7.1...v2.7.2) (2025-01-04)
+
+
+### Bug Fixes
+
+* drop unused mediawiki.Uri module ([55c7499](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/55c7499688b7685b33632a9e537e0448a8ce8d3c))
+* incorrect empty return value for getTabData ([ec1dfe2](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/ec1dfe27a20b7de73b41223171c0a5a62663d345)), closes [#204](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/204)
+* invalid Tabber HTML for TabberTransclude ([3b59751](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3b597511a5369a972e66073cf5972f0eed365a32))
+* TabberTransclude should add to Tabber count ([3bfa000](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/3bfa000dac4778b344379fdd11e227c90b54ef6e))
+* unescaped XSS in TabberTransclude page name ([f229cab](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/f229cab099c69006e25d4bad3579954e481dc566))
+
+
+### Miscellaneous Chores
+
+* **dev-deps:** drop oojs since it is unused ([74ba94e](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/74ba94ec847057e249029b8abd0bb979a894c2ba))
+
+## [2.7.1](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.7.0...v2.7.1) (2024-11-22)
+
+
+### Features
+
+* add support for custom attributes ([f553e95](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/f553e95d0a80747ba12b39c8472c66445968e6a0))
+
+
+### Bug Fixes
+
+* optional parameter $args declared before required parameter $frame is implicitly treated as a required parameter" ([#195](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/195)) ([422c60a](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/422c60a573df251e9d197fcc44fd09d1d4c59cb4))
+
+
+### Miscellaneous Chores
+
+* release 2.7.1 ([7866996](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/786699690cc5a268e7f4f01d31fc75ea26c1928f))
+
+## [2.7.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.6.0...v2.7.0) (2024-11-19)
+
+
+### Features
+
+* allow id and class attributes to be set on Tabber ([d5f9e03](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/d5f9e03d470e7c090e4687e9915f5f925eedc990))
+* drop Codex tabs ([2f82785](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/2f827857dc15448b608223e0864477cefeff93b4))
+
+
+### Bug Fixes
+
+* properly wrap text in paragraph if it is a wikitext link ([dc1d16c](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/dc1d16c2765ae2fc902a2a75e900109683a660f2))
+
+
+### Miscellaneous Chores
+
+* set installer-name for composer ([7cee4f4](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/7cee4f44eb4ca2d790465b234d18e0ebf1e0cd5c))
+
+## [2.6.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.5.0...v2.6.0) (2024-11-16)
+
+
+### Features
+
+* add TabberNeueUseLegacyTabIds config option ([#184](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/184)) ([1b60511](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/1b60511ae701670eb279ee7991d9cfab14a2a80d))
+* assign unique IDs to Tabber container ([de2ced5](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/de2ced5a363a39e3405575e7bfd53d20d59a8ad2))
+* only add empty paragraph for wikitext list elements ([f24ddb5](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/f24ddb58eef800cec92d2d47500e5358a52e906d)), closes [#151](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/151)
+* render all HTML server-side ([1e1d3de](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/1e1d3de9cd2f2832826efda2019048752b5dbc64))
+* simplify implementation and drop hash usage ([56619bf](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/56619bf56f9b0ada30f299cf99ecdccb52e2dbe5))
+* throw exception when duplicated label is found under legacy ID mode ([ab8e306](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/ab8e306fc6efc9707f391ac0a10cc191bad71cd3))
+* use Codex CSS variable directly ([bd5738a](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/bd5738afe86615e913be0fe273b3af0e6b10e709))
+
+
+### Bug Fixes
+
+* drop unused variable ([f87c43e](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/f87c43e8e4465d8522cdfbf151dc46a85d0b9f49))
+* fix various issues raised by code review ([9e8ac87](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/9e8ac878cc0b21ff0e4291ceeec851ad77ec6aa4))
+* keep arrow button icon inside its parent ([#186](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/issues/186)) ([201238c](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/201238ccd85a6bc5a3c8ce21a30d866609066b39))
+* no need to apply hover:hover to active state ([70f632a](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/70f632a4db41953a983594b14dddd456f129fa0a))
+* various issues found in code review ([1f75afc](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/1f75afc2174994fe9894c534d6276e2956394fed))
+
+
+### Performance Improvements
+
+* drop incorrect usage of rAF and do not set aria-hidden on tabpanels ([910f5c7](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/910f5c72f4ff422aec3d470059ba796f1cfedbb6))
+* only call one instance of MediaWikiServices ([724e347](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/commit/724e347ca10e4f452d250bdaffcd4d4d88b3d6f4))
+
 ## [2.5.0](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue/compare/v2.4.0...v2.5.0) (2024-09-01)
 
 
